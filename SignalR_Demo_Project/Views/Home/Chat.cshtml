@@ -1,0 +1,41 @@
+@model SignalR_Demo_Project.VM.ChatVM
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<input type="hidden" id="currentUserId" value="@Model.UserId" />
+
+<div class="row">
+    <div class="col-md-3">
+        <h4>Rooms</h4>
+        <form id="createRoomForm" class="input-group mb-2">
+            <input type="text" id="newRoomName" name="newRoomName" class="form-control" placeholder="Room name" />
+            <button type="submit" id="createRoomBtn" class="btn btn-primary" @(Model.AllowAddRoom ? "" : "disabled")>Create</button>
+        </form>
+
+        <label for="roomSelect" class="form-label">Room</label>
+        <select id="roomSelect" name="roomId" class="form-select mb-2">
+            
+        </select>
+
+        <label for="deleteRoomSelect" class="form-label">Delete Room</label>
+        <select id="deleteRoomSelect" name="deleteRoomId" class="form-select mb-4">
+
+        </select>
+
+        <label for="userSelect" class="form-label">User</label>
+        <select id="userSelect" name="userId" class="form-select">
+
+        </select>
+    </div>
+
+    <div class="col-md-9">
+        <div id="messagesList" class="border rounded p-2 mb-3" style="height:400px; overflow-y:auto;">
+        </div>
+
+        <form id="sendMessageForm" class="input-group">
+            <input type="text" id="messageInput" name="message" class="form-control" placeholder="Type a message..." autocomplete="off" />
+            <button type="submit" id="sendMessageBtn" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>

@@ -11,4 +11,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
     }
     public DbSet<ChatRoom> ChatRooms { get; set; }
+    public DbSet<ChatMessages> ChatMessages { get; set; }
 }
