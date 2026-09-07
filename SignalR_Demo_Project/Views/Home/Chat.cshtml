@@ -8,25 +8,50 @@
 <div class="row">
     <div class="col-md-3">
         <h4>Rooms</h4>
-        <form id="createRoomForm" class="input-group mb-2">
+        <div id="createRoomForm" class="input-group mb-2">
             <input type="text" id="newRoomName" name="newRoomName" class="form-control" placeholder="Room name" />
-            <button type="submit" id="createRoomBtn" class="btn btn-primary" @(Model.AllowAddRoom ? "" : "disabled")>Create</button>
-        </form>
+            <button type="submit" id="createRoomBtn" class="btn btn-primary" onclick="@($"addNewRoom()")">Create</button>
+        </div>
 
-        <label for="roomSelect" class="form-label">Room</label>
-        <select id="roomSelect" name="roomId" class="form-select mb-2">
-            
-        </select>
+        <label for="roomSelect" class="form-label">Join Room</label>
+        <div id="joinRoomForm" class="input-group mb-2">
+            <select id="roomSelect" name="roomId" class="form-select">
+
+            </select>
+            <button type="button" id="joinRoomBtn" class="btn btn-primary" onclick="@($"joinRoom()")" disabled>Join</button>
+        </div>
+
+        <label for="selectRoomSelect" class="form-label">Select Room</label>
+        <div id="selectRoomForm" class="input-group mb-2">
+            <select id="selectRoomSelect" name="selectRoomId" class="form-select">
+
+            </select>
+            <button type="button" id="selectRoomBtn" class="btn btn-primary" onclick="@($"selectRoom()")" disabled>Select</button>
+        </div>
+
+        <label for="leaveRoomSelect" class="form-label">Leave Room</label>
+        <div id="leaveRoomForm" class="input-group mb-2">
+            <select id="leaveRoomSelect" name="leaveRoomId" class="form-select">
+
+            </select>
+            <button type="button" id="leaveRoomBtn" class="btn btn-primary" onclick="@($"leaveRoom()")" disabled>Leave</button>
+        </div>
 
         <label for="deleteRoomSelect" class="form-label">Delete Room</label>
-        <select id="deleteRoomSelect" name="deleteRoomId" class="form-select mb-4">
+        <div id="deleteRoomForm" class="input-group mb-4">
+            <select id="deleteRoomSelect" name="deleteRoomId" class="form-select">
 
-        </select>
+            </select>
+            <button type="button" id="deleteRoomBtn" class="btn btn-primary" onclick="@($"deleteRoom()")" disabled>Delete</button>
+        </div>
 
         <label for="userSelect" class="form-label">User</label>
-        <select id="userSelect" name="userId" class="form-select">
+        <div id="userSelectForm" class="input-group mb-2">
+            <select id="userSelect" name="userId" class="form-select">
 
-        </select>
+            </select>
+            <button type="button" id="userSelectBtn" class="btn btn-primary" onclick="@($"selectUser()")" disabled>Select</button>
+        </div>
     </div>
 
     <div class="col-md-9">
@@ -39,3 +64,8 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js" asp-append-version="true"></script>
+}

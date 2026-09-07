@@ -7,13 +7,15 @@ namespace SignalR_Demo_Project.Models
     {
         public int Id { get; set; } 
         
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
 
         [ForeignKey(nameof(RoomId))]
         public ChatRoom ChatRoom { get; set; }
 
         [Required]
         public string Sender { get; set; }
+
+        public string? Reciever { get; set; }
 
         [Required]
         public string Message { get; set; }
